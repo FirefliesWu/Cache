@@ -2,7 +2,12 @@ import api.cache.ICache;
 import core.bs.CacheBs;
 import core.evict.CacheEvicts;
 import core.listener.MyRemoveListener;
+import core.listener.MySlowListener;
+import core.load.MyCacheLoad;
 import core.persist.CachePersistDbJson;
+import core.persist.CachePersists;
+
+import java.util.concurrent.TimeUnit;
 
 public class Test {
     public static void main(String[] args) throws InterruptedException {
@@ -62,7 +67,7 @@ public class Test {
 //        System.out.println("------"+cache.keySet());
 //        ICache<String,String> cache = CacheBs.<String,String>newInstance().load(CacheLoads.<String,String>aof("1.aof")).build();
 //        System.out.println(cache.keySet());
-        ICache<String,String> cache = CacheBs.<String,String>newInstance().size(3).evict(CacheEvicts.<String,String>lru2()).build();
+        ICache<String,String> cache = CacheBs.<String,String>newInstance().size(3).evict(CacheEvicts.<String,String>lfu()).build();
         cache.put("A","HELLO");
         cache.put("B","World");
         cache.put("C","FIFO");
@@ -70,7 +75,15 @@ public class Test {
         cache.put("D","LRU");
         System.out.println(cache.size());
         System.out.println(cache.keySet());
-
+//        ICache<String, String> cache = CacheBs.<String,String>newInstance()
+//                .persist(CachePersists.<String, String>aof("1.aof"))
+//                .build();
+//        cache.put("1","1");
+//        cache.put("2","2");
+//        cache.expire("1",1);
+//        cache.put("3","3");
+//        cache.remove("2");
+//        cache.clear();
     }
 
     public void test2(){

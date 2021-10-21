@@ -14,7 +14,10 @@ import java.util.Map;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
-
+@Deprecated
+/**
+ * 查询过期Key时不是随机的，性能不够
+ */
 public class CacheExpire<K,V> implements ICacheExpire<K,V> {
     private static final Log log = LogFactory.getLog(CacheExpire.class);
     /**

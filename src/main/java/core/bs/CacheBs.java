@@ -2,8 +2,10 @@ package core.bs;
 
 import api.cache.ICache;
 import api.evict.ICacheEvict;
+import api.expire.ICacheExpire;
 import core.cache.Cache;
 import core.evict.CacheEvicts;
+import core.expire.CacheExpire;
 import core.load.CacheLoads;
 import core.persist.CachePersists;
 import core.listener.slow.CacheSlowListeners;
@@ -48,6 +50,7 @@ public final class CacheBs<K,V> {
      * 持久化
      */
     private ICachePersist<K,V> persist = CachePersists.none();
+
 
     /**
      * 删除监听器列表

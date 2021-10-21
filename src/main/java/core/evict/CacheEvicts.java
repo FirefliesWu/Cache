@@ -64,4 +64,5 @@ public class CacheEvicts<K,V>{
     public static <K,V> ICacheEvict<K,V> lru2(){ return new CacheEvictLRU2<>(); }
 
 
+    public static <K,V> ICacheEvict<K,V> lfu(){ return new CacheEvictLFU<>();}
 }

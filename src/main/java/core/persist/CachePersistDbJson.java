@@ -62,6 +62,6 @@ public class CachePersistDbJson <K,V> extends CachePersistAdaptor<K,V> {
 
     @Override
     public TimeUnit timeUnit() {
-        return TimeUnit.MINUTES;
+        return TimeUnit.SECONDS;
     }
 }

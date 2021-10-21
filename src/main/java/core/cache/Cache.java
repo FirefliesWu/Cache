@@ -12,6 +12,7 @@ import api.load.ICacheLoad;
 import api.persist.ICachePersist;
 import core.exception.CacheRuntimeException;
 import core.expire.CacheExpire;
+import core.expire.CacheExpireRandom;
 import core.listener.remove.CacheRemoveListenerContext;
 import core.persist.InnerCachePersist;
 import com.github.houbb.heaven.util.lang.ObjectUtil;
@@ -46,7 +47,8 @@ public class Cache<K,V> implements ICache<K,V> {
      * 初始化
      */
     public void init(){
-        this.expire = new CacheExpire<>(this);
+        //默认随机检查过期key
+        this.expire = new CacheExpireRandom<>(this);
         this.load.load(this);
         //初始化持久化
         if (persist != null){
